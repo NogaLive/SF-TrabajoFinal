@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Teatro Principal - Asientos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>🎭 Teatro Principal</h1>
+
+  <h2>Platea</h2>
+  <div class="grid" id="platea-container"></div>
+
+  <h2>Balcón</h2>
+  <div class="grid" id="balcon-container"></div>
+
+  <button id="confirmarSeleccion">Confirmar selección</button>
+
+  <script>
+    const seleccionados = new Set();
+
+    function crearAsientos(tipo, cantidad, porFila, contenedorId, offset) {
+      const container = document.getElementById(contenedorId);
+      container.innerHTML = '';
+
+      for (let i = 0; i < cantidad; i++) {
+        const btn = document.createElement('button');
+        btn.classList.add('asiento', tipo);
+        btn.innerText = i + offset;
+        btn.dataset.id = i + offset;
+        btn.addEventListener('click', () => {
+          if (btn.classList.contains('vendido')) return;
+          btn.classList.toggle('seleccionado');
+          if (seleccionados.has(btn.dataset.id)) {
+            seleccionados.delete(btn.dataset.id);
+          } else {
+            seleccionados.add(btn.dataset.id);
+          }
+        });
+        container.appendChild(btn);
+      }
+    }
+
+    crearAsientos('platea', 60, 10, 'platea-container', 1);
+    crearAsientos('balcon', 40, 10, 'balcon-container', 61);
+
+    document.getElementById('confirmarSeleccion').addEventListener('click', () => {
+      if (seleccionados.size === 0) {
+        alert("No has seleccionado asientos.");
+      } else {
+        alert("Seleccionaste los asientos: " + [...seleccionados].join(', '));
+        // Aquí puedes hacer un fetch POST para marcarlos como vendidos si deseas
+      }
+    });
+  </script>
+</body>
+</html>

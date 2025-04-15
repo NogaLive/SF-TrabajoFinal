@@ -1,0 +1,75 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #121212;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #f1c40f;
+  }
+  
+  h2 {
+    margin-top: 40px;
+    color: #ecf0f1;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    max-width: 750px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  
+  .asiento {
+    padding: 10px;
+    background-color: #2ecc71;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .asiento:hover {
+    background-color: #27ae60;
+  }
+  
+  .asiento.vendido {
+    background-color: #e74c3c;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  .asiento.seleccionado {
+    background-color: #f1c40f;
+  }
+  
+  .asiento.platea {
+    background-color: #3498db;
+  }
+  
+  .asiento.balcon {
+    background-color: #9b59b6;
+  }
+  
+  button#confirmarSeleccion {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 30px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button#confirmarSeleccion:hover {
+    background-color: #3498db;
+  }
+  
