@@ -27,7 +27,7 @@ body {
   
   .asiento {
     padding: 10px;
-    background-color: #2ecc71;
+    background-color: #c4c4c4;
     color: black;
     font-weight: bold;
     border: none;
@@ -47,16 +47,10 @@ body {
   }
   
   .asiento.seleccionado {
-    background-color: #f1c40f;
+    background-color: #16f10f;
+    color: black;
   }
   
-  .asiento.platea {
-    background-color: #3498db;
-  }
-  
-  .asiento.balcon {
-    background-color: #9b59b6;
-  }
   
   button#confirmarSeleccion {
     padding: 10px 20px;

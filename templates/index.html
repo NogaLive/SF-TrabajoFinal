@@ -18,40 +18,44 @@
 
   <script>
     const seleccionados = new Set();
-
+  
     function crearAsientos(tipo, cantidad, porFila, contenedorId, offset) {
       const container = document.getElementById(contenedorId);
       container.innerHTML = '';
-
+  
       for (let i = 0; i < cantidad; i++) {
         const btn = document.createElement('button');
         btn.classList.add('asiento', tipo);
-        btn.innerText = i + offset;
+        btn.innerText = i + offset; // Nombres solo numéricos
         btn.dataset.id = i + offset;
+  
         btn.addEventListener('click', () => {
           if (btn.classList.contains('vendido')) return;
+  
           btn.classList.toggle('seleccionado');
+  
           if (seleccionados.has(btn.dataset.id)) {
             seleccionados.delete(btn.dataset.id);
           } else {
             seleccionados.add(btn.dataset.id);
           }
         });
+  
         container.appendChild(btn);
       }
     }
-
-    crearAsientos('platea', 60, 10, 'platea-container', 1);
-    crearAsientos('balcon', 40, 10, 'balcon-container', 61);
-
+  
+    crearAsientos('platea', 60, 10, 'platea-container', 1);     // 1 a 30
+    crearAsientos('balcon', 40, 10, 'balcon-container', 61);    // 31 a 50
+  
     document.getElementById('confirmarSeleccion').addEventListener('click', () => {
       if (seleccionados.size === 0) {
-        alert("No has seleccionado asientos.");
+        alert("No has seleccionado ningún asiento.");
       } else {
         alert("Seleccionaste los asientos: " + [...seleccionados].join(', '));
-        // Aquí puedes hacer un fetch POST para marcarlos como vendidos si deseas
       }
     });
   </script>
+  
 </body>
 </html>
